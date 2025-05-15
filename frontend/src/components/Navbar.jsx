@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogoIcon from '../assets/icons/Logo-Icon.svg';
 import ArrowDown from '../assets/icons/Arrow-Down-Icon.svg';
-import '../styling/Navbar.css';
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
