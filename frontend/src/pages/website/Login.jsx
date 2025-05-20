@@ -39,56 +39,57 @@ export default function Login() {
 
     return (
         <>
-            <nav className="nav-login">
-                <div className="nav-container">
-                    <Link to="/" className="logo-link">
-                        <img src={LogoIcon} alt="Logo" className="logo" />
-                    </Link>
-                </div>
-            </nav>
-            <div className='login-container'>
-                <div className='form-container'>
-                    <div className='form-container-white'>
-                        <div className='login-title-container'>
-                            <p className='desktop-h5 text-center'>Welcome Back</p>
-                            <p className='desktop-body-s text-center'>Please enter your details to log in</p>
-                        </div>
+            <div className="login-wrapper">
+                {/* Close Icon */}
+                <div className="close-button" onClick={() => navigate('/')}>×</div>
 
-                        <div className='login-buttons-container'>
-                            <div className="login-button">
-                                <img src={googleIcon} alt="Google" className="login-icon" />
-                            </div>
-                            <div className="login-button">
-                                <img src={facebookIcon} alt="Facebook" className="login-icon" />
-                            </div>
-                            <div className="login-button">
-                                <img src={appleIcon} alt="Apple" className="login-icon" />
-                            </div>
-                        </div>
-
-                        <form onSubmit={loginUser}>
-                            <div className="login-input-container">
-                                <label className='desktop-body-s'>Email</label>
-                                <input type="email" placeholder="Enter email..." value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
-                            </div>
-                            <div className="login-input-container">
-                                <label className='desktop-body'>Password</label>
-                                <input type="password" placeholder="Enter password..." value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
-                            </div>
-                            <label className='terms-label'>
-                                <input type='checkbox' className='terms-checkbox' />
-                                <span className='desktop-body-xs'>
-                                    Remember Me
-                                </span>
-                            </label>
-                            <button className='blue-button-login desktop-button' type="submit">Login</button>
-                        </form>
-                        <p className='login-redirect text-center desktop-body-s'>Don't have An Account?  <a href="/register"><span style={{ fontWeight: 600, color: 'black' }}>Register Now</span></a></p>
+                {/* Left Panel – Image + Quote */}
+                <div className="login-left">
+                    <img src={backgroundImg} alt="Login visual" className="login-visual" />
+                    <div className="login-quote">
+                        <span className="quote-icon">“</span>
+                        <p className="quote-text">
+                            “This has completely changed the way I find work. Instead of chasing leads, I just tap my card and let my profile do the talking. Clients love it.”
+                        </p>
+                        <p className="quote-author">Liam Turner – Electrical Contractor</p>
                     </div>
 
                 </div>
-                <div className='login-image-container'>
-                    <img src={backgroundImg} alt="Background" className="login-bg" />
+
+                {/* Right Panel – Form */}
+                <div className="login-right">
+                    <div className="login-card">
+                        <h2 className="login-title">Welcome back!</h2>
+                        <form className="login-form" onSubmit={loginUser}>
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={data.email}
+                                onChange={(e) => setData({ ...data, email: e.target.value })}
+                            />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={data.password}
+                                onChange={(e) => setData({ ...data, password: e.target.value })}
+                            />
+                            <button type="submit  desktop-body-s" className="primary-button">Sign In</button>
+                        </form>
+
+                        <p className="login-alt-text">
+                            Don’t have an account? <Link to="/register">Create one</Link>
+                        </p>
+
+                        <div className="divider"><span>or</span></div>
+
+                        <div className="social-buttons">
+                            <a className="social-button" href="http://localhost:8000/auth/google">
+                                <img src={googleIcon} alt="Google" />
+                                Continue with Google
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </>

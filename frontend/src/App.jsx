@@ -8,9 +8,8 @@ import Register from './pages/website/Register'
 import Login from './pages/website/Login'
 import MyProfile from './pages/interface/MyProfile'
 import ShopNFCCards from './pages/website/ShopNFCCards'
-import PlasticCard from './pages/website/PlasticCard'
-import WoodenCard from './pages/website/WoodenCard'
-import MetalCard from './pages/website/MetalCard'
+import WhiteCard from './pages/website/WhiteCard'
+import BlackCard from './pages/website/BlackCard'
 import HowItWorks from './pages/website/HowItWorks'
 import FAQ from './pages/website/FAQ'
 import HelpCentre from './pages/website/HelpCentre'
@@ -37,9 +36,8 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/myprofile' element={<MyProfile />} />
         <Route path='/shopnfccards' element={<ShopNFCCards />} />
-        <Route path="/shopnfccards/plasticnfccard" element={<PlasticCard />} />
-        <Route path="/shopnfccards/woodennfccard" element={<WoodenCard />} />
-        <Route path="/shopnfccards/metalnfccard" element={<MetalCard />} />
+        <Route path="/shopnfccards/whitecard" element={<WhiteCard />} />
+        <Route path="/shopnfccards/blackcard" element={<BlackCard />} />
         <Route path='/faq' element={<FAQ />} />
         <Route path='/reviews' element={<Reviews />} />
         <Route path='/whatisnfc' element={<WhatIsNFC />} />

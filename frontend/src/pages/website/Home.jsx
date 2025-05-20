@@ -32,6 +32,14 @@ import LockIcon from '../../assets/icons/Lock-Icon.svg'
 import PencilIcon from '../../assets/icons/Pencil-Icon.svg'
 import PhoneIcon from '../../assets/icons/Phone-Icon.svg'
 import WalletIcon from '../../assets/icons/Wallet-Icon.svg'
+import Profile1 from '../../assets/images/Profile1.png'
+import Profile2 from '../../assets/images/Profile2.png'
+import Profile3 from '../../assets/images/Profile3.png'
+import Profile4 from '../../assets/images/Profile4.png'
+import Profile5 from '../../assets/images/Profile5.png'
+
+
+
 
 
 
@@ -52,38 +60,58 @@ export default function Home() {
         <div className="hero-container">
           <div className="hero-left">
             <h1 className="desktop-h1 hero-heading">Look More Professional. Win More Work!</h1>
-            <p style={{ maxWidth: 340 }} className="desktop-h6 hero-subtitle">Tap your card. Share your profile. Stand out from every other tradie.</p>
+            <p style={{ maxWidth: 340 }} className="desktop-h6 hero-subtitle">
+              Tap your card. Share your profile. Stand out from every other tradie.
+            </p>
+            <div className="hero-social-proof">
+              <div className="hero-avatars">
+                <img src={Profile1} alt="User 1" className="avatar" />
+                <img src={Profile2} alt="User 2" className="avatar" />
+                <img src={Profile3} alt="User 3" className="avatar" />
+                <img src={Profile4} alt="User 4" className="avatar" />
+                <img src={Profile5} alt="User 5" className="avatar" />
+              </div>
+              <p className="hero-rating">Trusted by 1,000+ tradies</p>
+            </div>
             <div className="hero-cta">
               <Link to="/login" className="black-button desktop-button">Get Started Free</Link>
               <Link to="/howitworks" className="blue-button desktop-button">See How It Works</Link>
             </div>
-            <div className="hero-tick-container">
-              <div className="hero-tick">
-                <img src={TickIcon} className="icon" />
-                <p>No app required — tap & share instantly</p>
+
+            {/* ✅ 2-Row Tick Layout */}
+            <div className="hero-tick-wrap">
+              <div className="hero-tick-row">
+                <div className="hero-tick">
+                  <img src={TickIcon} className="icon" />
+                  <p>No app required — tap & share instantly</p>
+                </div>
+                <div className="hero-tick">
+                  <img src={TickIcon} className="icon" />
+                  <p>Built for tradesmen</p>
+                </div>
               </div>
-              <div className="hero-tick">
-                <img src={TickIcon} className="icon" />
-                <p>Built for tradesmen</p>
-              </div>
-            </div>
-            <div className="hero-tick-container">
-              <div className="hero-tick">
-                <img src={TickIcon} className="icon" />
-                <p>Fully customizable digital profile</p>
-              </div>
-              <div className="hero-tick">
-                <img src={TickIcon} className="icon" />
-                <p>Works with iPhone & Android</p>
+              <div className="hero-tick-row">
+                <div className="hero-tick">
+                  <img src={TickIcon} className="icon" />
+                  <p>Fully customizable digital profile</p>
+                </div>
+                <div className="hero-tick">
+                  <img src={TickIcon} className="icon" />
+                  <p>Works with iPhone & Android</p>
+                </div>
               </div>
             </div>
           </div>
+
           <div className="hero-right">
-            <img src={HeroImage} alt="Hero" className="" />
+            <img src={HeroImage} alt="Hero" />
           </div>
         </div>
       </div>
       {/* HERO */}
+
+
+
 
 
       {/* SECTION 1 */}

@@ -14,13 +14,16 @@ body {
     width: 100%;
 }
 
+
+
 /* HERO */
 .home-hero {
     position: relative;
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     overflow: hidden;
     margin-top: 0;
+    margin-bottom: 100px;
 }
 
 .hero-image {
@@ -44,6 +47,7 @@ body {
     height: 100%;
     padding: 0 20px;
     overflow: visible;
+    margin-top: 20px;
 }
 
 .hero-left {
@@ -76,24 +80,7 @@ body {
     display: flex;
     gap: 12px;
     margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.hero-tick-container {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    column-gap: 20px;
-    row-gap: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    overflow: visible;
-    justify-content: start;
-}
-
-.hero-tick {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-wrap: nowrap;
 }
 
 .hero-heading {
@@ -101,7 +88,34 @@ body {
     max-width: 500px;
 }
 
-/* HERO RESPONSIVE */
+.hero-tick-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+    overflow: visible;
+}
+
+.hero-tick-row {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    overflow-x: visible;
+}
+
+.hero-tick {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.hero-tick img.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 1200px) {
     .hero-container {
         max-width: 940px;
@@ -121,7 +135,6 @@ body {
         flex-direction: column;
         text-align: center;
         padding: 20px;
-        margin-bottom: 100px;
     }
 
     .hero-left,
@@ -145,31 +158,87 @@ body {
         margin-bottom: 20px;
     }
 
-    .hero-tick-container {
-        grid-template-columns: repeat(2, auto);
-        justify-content: center;
-        text-align: left;
+    .hero-tick-wrap {
+        align-items: center;
+        gap: 12px;
+        margin-top: 0;
     }
-}
 
-@media (max-width: 600px) {
-    .hero-tick-container {
-        display: flex;
+    .hero-tick-row {
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        row-gap: 10px;
-        text-align: center;
+        gap: 12px;
     }
 
     .hero-tick {
         justify-content: center;
-    }
-
-    .hero-heading {
-        max-width: 500px;
+        text-align: center;
     }
 }
+
+@media (max-width: 400px) {
+    .hero-cta {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-cta .black-button,
+    .hero-cta .blue-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-tick-wrap {
+        display: none;
+    }
+}
+
+.hero-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-avatars {
+    display: flex;
+    position: relative;
+}
+
+.hero-avatars .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    margin-left: -10px;
+}
+
+.hero-avatars .avatar:first-child {
+    margin-left: 0;
+}
+
+.hero-rating {
+    font-size: 14px;
+    color: black;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .hero-social-proof {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .hero-rating {
+        font-weight: 600;
+    }
+}
+
 
 
 
@@ -289,24 +358,21 @@ body {
     }
 }
 
+@media (max-width: 800px) {
+    .section-1-left img {
+        margin-bottom: 0px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+}
+
 @media (max-width: 600px) {
     .section {
         width: 80%;
     }
-
-    .section-1-left img {
-        margin-bottom: 0;
-        height: 300px;
-    }
 }
-
-@media (max-width: 400px) {
-    .section-1-left img {
-        margin-bottom: 0px;
-        height: 200px;
-    }
-}
-
 /* SECTION 1 */
 
 
@@ -330,6 +396,10 @@ body {
 .section-3-container {
     display: flex;
     gap: 20px;
+}
+
+.shop-page-container {
+    margin: 0 100px;
 }
 
 .section-3-container-flex {
@@ -811,4 +881,3 @@ body {
 }
 
 /* SECTION 9 */
-
