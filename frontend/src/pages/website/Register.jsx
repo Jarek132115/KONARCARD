@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-
 import backgroundImg from '../../assets/images/background.png';
 import facebookIcon from '../../assets/icons/Facebook-Icon.svg';
 import appleIcon from '../../assets/icons/Apple-Icon.svg';

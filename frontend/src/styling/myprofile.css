@@ -2,7 +2,7 @@
     height: 100vh;
     background-color: white;
     padding: 24px;
-    width: min-content;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(55, 55, 55, 0.10);
@@ -11,33 +11,89 @@
 .my-account-container {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     gap: 10px;
+}
+
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    flex-grow: 1;
+}
+
+.email {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.settings-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 12px 0;
+}
+
+.section-title {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .sidebar-buttons {
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    margin-top: 10px;
     gap: 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
 }
 
 .sidebar-buttons:hover {
-    background-color: #F6F6F6;
+    background-color: #f6f6f6;
     cursor: pointer;
-    border-radius: 10px;
-    transform: translateY(-1px);
 }
 
-.main-links-container {
-    gap: 10px;
-    margin-bottom: 20px;
+.help-submenu {
+    padding-left: 28px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.submenu-item {
+    font-size: 13px;
+    cursor: pointer;
+    color: #333;
+}
+
+.submenu-item:hover {
+    text-decoration: underline;
 }
 
 .logout-button {
     margin-top: auto;
-    display: flex;
-    align-items: center;
     gap: 10px;
-  }
+}
+
+.logout-text {
+    color: #ff0000;
+    font-weight: 500;
+}

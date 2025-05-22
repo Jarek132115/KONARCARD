@@ -9,6 +9,8 @@ import './styling/footer.css'
 import './styling/buttons.css'
 import './styling/product.css'
 import './styling/policies.css'
+import './styling/success.css'
+import './styling/profile.css'
 import App from './App.jsx'
 import { BrowserRouter as Router} from 'react-router-dom'
 

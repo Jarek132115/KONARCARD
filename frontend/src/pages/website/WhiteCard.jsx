@@ -74,7 +74,7 @@ export default function WoodenCard() {
             </div>
             <BuyNowButton className="black-button" product={{
               name: 'Konar Card - Black Edition',
-              image: WoodenCards,
+              image: 'https://via.placeholder.com/300',
               price: 19.95
             }} />
           </div>
