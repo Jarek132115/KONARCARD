@@ -4,33 +4,33 @@ import People from '../../assets/images/People.png';
 
 export default function Profile() {
   return (
-    <div className="profile-page">
+    <div className="profile-layout">
       <Sidebar />
-      <div className="profile-content">
-        <h1 className="profile-title">Profile</h1>
+      <div className="profile-main">
+        <h1 className="profile-main-title">Profile</h1>
 
-        <div className="profile-card">
-          <div className="profile-header">
-            <div className="profile-pic-wrapper">
-              <img src={People} alt="Profile" className="profile-img" />
-              <label htmlFor="upload-input" className="upload-label">Change</label>
+        <div className="profile-card-box">
+          <div className="profile-avatar-section">
+            <div className="profile-avatar-wrapper">
+              <img src={People} alt="Profile" className="profile-avatar" />
+              <label htmlFor="upload-input" className="upload-avatar-label">Change</label>
               <input id="upload-input" type="file" style={{ display: 'none' }} />
             </div>
           </div>
 
-          <div className="input-group">
-            <label>Your Display Name</label>
+          <div className="profile-input-block">
+            <label>Display Name</label>
             <input type="text" placeholder="Jarek Konarski" />
           </div>
 
-          <div className="input-row">
-            <div className="input-group">
+          <div className="profile-input-row">
+            <div className="profile-input-block">
               <label>Email</label>
               <input type="email" placeholder="hello@konardesign.com" />
             </div>
-            <div className="input-group">
+            <div className="profile-input-block">
               <label>Phone Number</label>
-              <div className="phone-wrapper">
+              <div className="profile-phone-inputs">
                 <select>
                   <option value="+44">+44</option>
                 </select>
@@ -39,17 +39,17 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="input-group">
+          <div className="profile-input-block">
             <label>Password</label>
-            <div className="password-wrapper">
+            <div className="profile-password-wrapper">
               <input type="password" placeholder="********" />
-              <button className="reset-btn">Reset</button>
+              <button className="profile-reset-button">Reset</button>
             </div>
           </div>
 
-          <div className="action-buttons">
-            <button className="delete-btn">Delete Your Account</button>
-            <button className="save-btn">Save Updates</button>
+          <div className="profile-action-row">
+            <button className="profile-delete-button">Delete Your Account</button>
+            <button className="profile-save-button">Save Updates</button>
           </div>
         </div>
       </div>

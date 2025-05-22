@@ -10,7 +10,15 @@ import './styling/buttons.css'
 import './styling/product.css'
 import './styling/policies.css'
 import './styling/success.css'
+import './styling/sidebar.css'
 import './styling/profile.css'
+import './styling/nfccards.css'
+import './styling/notification.css'
+import './styling/subscription.css'
+import './styling/billing.css'
+import './styling/helpcentreinterface.css'
+
+
 import App from './App.jsx'
 import { BrowserRouter as Router} from 'react-router-dom'
 

@@ -1,99 +1,168 @@
-.sidebar {
+.myprofile-layout {
+    display: flex;
     height: 100vh;
-    background-color: white;
+    background-color: #f9f9f9;
+}
+
+.myprofile-main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    font-family: sans-serif;
+}
+
+.myprofile-greeting {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.myprofile-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.myprofile-preview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.mock-phone {
+    background: #fff;
+    border: 10px solid #ccc;
+    border-radius: 40px;
     padding: 24px;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid rgba(55, 55, 55, 0.10);
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.my-account-container {
-    display: flex;
-    align-items: center;
+.mock-cover {
+    width: 100%;
+    border-radius: 12px;
     margin-bottom: 16px;
-    gap: 10px;
 }
 
-.profile-pic {
-    width: 45px;
-    height: 45px;
+.mock-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.mock-subtitle {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+}
+
+.mock-button {
+    background: black;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    margin: 16px 0;
+    width: 100%;
+}
+
+.mock-about {
+    background: #f1f1f1;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    text-align: left;
+}
+
+.mock-avatar {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.user-info {
-    flex-grow: 1;
-}
-
-.email {
-    font-size: 12px;
-    color: #888;
+.mock-name {
+    font-weight: 600;
     margin: 0;
 }
 
-.name {
-    font-size: 14px;
-    font-weight: 500;
+.mock-role {
+    font-size: 13px;
     margin: 0;
 }
 
-.settings-icon {
-    width: 20px;
-    height: 20px;
-}
-
-.divider {
-    border: none;
-    border-top: 1px solid #e0e0e0;
-    margin: 12px 0;
-}
-
-.section-title {
+.mock-bio {
     font-size: 12px;
-    color: #555;
-    margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+.myprofile-editor {
+    flex: 1;
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.editor-title {
+    font-size: 18px;
     font-weight: 600;
 }
 
-.sidebar-buttons {
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-    gap: 10px;
-    border-radius: 10px;
-    transition: all 0.2s ease;
+.editor-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
-.sidebar-buttons:hover {
-    background-color: #f6f6f6;
-    cursor: pointer;
-}
-
-.help-submenu {
-    padding-left: 28px;
-    margin-top: 8px;
+.input-block {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.submenu-item {
-    font-size: 13px;
-    cursor: pointer;
-    color: #333;
+.input-block label {
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.submenu-item:hover {
-    text-decoration: underline;
+.input-block input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
-.logout-button {
-    margin-top: auto;
+.option-row {
+    display: flex;
     gap: 10px;
 }
 
-.logout-text {
-    color: #ff0000;
+.theme-button,
+.font-button {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
     font-weight: 500;
+}
+
+.cover-preview {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.divider {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #eee;
 }

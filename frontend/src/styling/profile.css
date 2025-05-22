@@ -1,50 +1,52 @@
-.profile-page {
+.profile-layout {
     display: flex;
+    height: 100vh;
     background-color: #f9f9f9;
-    min-height: 100vh;
-    font-family: sans-serif;
 }
 
-.profile-content {
-    flex-grow: 1;
+.profile-main {
+    flex: 1;
     padding: 40px;
+    font-family: sans-serif;
+    /* Scoped only to the profile area */
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
-.profile-title {
+.profile-main-title {
     align-self: flex-start;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 30px;
 }
 
-.profile-card {
+.profile-card-box {
     background: white;
     padding: 32px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    max-width: fit-content;
+    max-width: 600px;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.profile-header {
+.profile-avatar-section {
     display: flex;
     align-items: flex-start;
 }
 
-.profile-pic-wrapper {
+.profile-avatar-wrapper {
     position: relative;
     width: 80px;
     height: 80px;
     margin-bottom: 10px;
 }
 
-.profile-img {
+.profile-avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -52,7 +54,7 @@
     border: 2px solid #e0e0e0;
 }
 
-.upload-label {
+.upload-avatar-label {
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -67,56 +69,57 @@
     transition: 0.2s ease;
 }
 
-.upload-label:hover {
+.upload-avatar-label:hover {
     opacity: 1;
 }
 
-.input-group {
+.profile-input-block {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.input-group label {
+.profile-input-block label {
     font-size: 14px;
     font-weight: 500;
 }
 
-.input-group input {
+.profile-input-block input {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
 }
 
-.input-row {
+.profile-input-row {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
-.phone-wrapper {
+.profile-phone-inputs {
     display: flex;
     gap: 8px;
 }
 
-.phone-wrapper select,
-.phone-wrapper input {
+.profile-phone-inputs select,
+.profile-phone-inputs input {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
 }
 
-.password-wrapper {
+.profile-password-wrapper {
     display: flex;
     gap: 8px;
 }
 
-.password-wrapper input {
+.profile-password-wrapper input {
     flex-grow: 1;
 }
 
-.reset-btn {
+.profile-reset-button {
     padding: 10px 12px;
     background: #eee;
     border: none;
@@ -125,13 +128,15 @@
     font-weight: 500;
 }
 
-.action-buttons {
+.profile-action-row {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.delete-btn {
+.profile-delete-button {
     background: none;
     border: 1.5px solid red;
     color: red;
@@ -141,7 +146,7 @@
     cursor: pointer;
 }
 
-.save-btn {
+.profile-save-button {
     background: black;
     color: white;
     padding: 10px 16px;
