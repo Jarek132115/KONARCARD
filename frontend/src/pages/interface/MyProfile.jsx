@@ -1,9 +1,12 @@
-import React from 'react';
-import Sidebar from '../../components/Sidebar';
-import ProfileCardImage from '../../assets/images/background-hero.png'; 
-import UserAvatar from '../../assets/images/People.png'; 
+import React from "react";
+import Sidebar from "../../components/Sidebar";
+import ProfileCardImage from "../../assets/images/background-hero.png";
+import UserAvatar from "../../assets/images/People.png";
+import useBusinessCardStore from "../../store/businessCardStore";
 
 export default function MyProfile() {
+  const { state, updateState } = useBusinessCardStore();
+
   return (
     <div className="myprofile-layout">
       <Sidebar />
@@ -14,10 +17,16 @@ export default function MyProfile() {
           {/* Phone Preview */}
           <div className="myprofile-preview">
             <div className="mock-phone">
-              <img src={ProfileCardImage} alt="Cover" className="mock-cover" />
-              <h2 className="mock-title">Best Bathroom Renovator In The World Always</h2>
-              <p className="mock-subtitle">Best Bathroom Renovator in The World Always</p>
-              <button className="mock-button">Exchange Contact</button>
+              <img
+                src={state.coverPhoto || ProfileCardImage}
+                alt="Cover"
+                className="mock-cover"
+              />
+              <h2 className="mock-title">{state.mainHeading}</h2>
+              <p className="mock-subtitle">{state.subHeading}</p>
+              <button type="button" className="mock-button">
+                Exchange Contact
+              </button>
 
               <div className="mock-about">
                 <img src={UserAvatar} alt="Avatar" className="mock-avatar" />
@@ -25,7 +34,8 @@ export default function MyProfile() {
                   <p className="mock-name">Jarek Konarski</p>
                   <p className="mock-role">Web Designer</p>
                   <p className="mock-bio">
-                    I am a young talented web design based out in London who loves what he does and is one of the best at
+                    I am a young talented web design based out in London who
+                    loves what he does and is one of the best at
                   </p>
                 </div>
               </div>
@@ -37,24 +47,70 @@ export default function MyProfile() {
             <h2 className="editor-title">Create Your Digital Business Card</h2>
 
             <div className="input-block">
-              <label>Business Card Name</label>
-              <input type="text" placeholder="My Business Card" />
+              <label htmlFor="businessName">Business Card Name</label>
+              <input
+                id="businessName"
+                type="text"
+                placeholder="My Business Card"
+                value={state.businessName}
+                onChange={(e) => updateState({ businessName: e.target.value })}
+              />
             </div>
 
             <div className="input-block">
               <label>Page Theme</label>
               <div className="option-row">
-                <button className="theme-button">Light Mode</button>
-                <button className="theme-button">Dark Mode</button>
+                <button
+                  type="button"
+                  className={`theme-button ${
+                    state.pageTheme === "light" ? "active" : ""
+                  }`}
+                  onClick={() => updateState({ pageTheme: "light" })}
+                >
+                  Light Mode
+                </button>
+                <button
+                  type="button"
+                  className={`theme-button ${
+                    state.pageTheme === "dark" ? "active" : ""
+                  }`}
+                  onClick={() => updateState({ pageTheme: "dark" })}
+                >
+                  Dark Mode
+                </button>
               </div>
             </div>
 
             <div className="input-block">
               <label>Font</label>
               <div className="option-row">
-                <button className="font-button">Inter</button>
-                <button className="font-button">Montserrat</button>
-                <button className="font-button">Poppins</button>
+                <button
+                  type="button"
+                  className={`font-button ${
+                    state.font === "Inter" ? "active" : ""
+                  }`}
+                  onClick={() => updateState({ font: "Inter" })}
+                >
+                  Inter
+                </button>
+                <button
+                  type="button"
+                  className={`font-button ${
+                    state.font === "Montserrat" ? "active" : ""
+                  }`}
+                  onClick={() => updateState({ font: "Montserrat" })}
+                >
+                  Montserrat
+                </button>
+                <button
+                  type="button"
+                  className={`font-button ${
+                    state.font === "Poppins" ? "active" : ""
+                  }`}
+                  onClick={() => updateState({ font: "Poppins" })}
+                >
+                  Poppins
+                </button>
               </div>
             </div>
 
@@ -63,18 +119,34 @@ export default function MyProfile() {
             <h3 className="editor-subtitle">Hero Section</h3>
 
             <div className="input-block">
-              <label>Cover Photo</label>
-              <img src={ProfileCardImage} alt="Cover" className="cover-preview" />
+              <label htmlFor="coverPhoto">Cover Photo</label>
+              <img
+                src={state.coverPhoto || ProfileCardImage}
+                alt="Cover"
+                className="cover-preview"
+              />
             </div>
 
             <div className="input-block">
-              <label>Main Heading</label>
-              <input type="text" placeholder="Best Bathroom Renovator In The World Always" />
+              <label htmlFor="mainHeading">Main Heading</label>
+              <input
+                id="mainHeading"
+                type="text"
+                placeholder="Best Bathroom Renovator In The World Always"
+                value={state.mainHeading}
+                onChange={(e) => updateState({ mainHeading: e.target.value })}
+              />
             </div>
 
             <div className="input-block">
-              <label>Subheading</label>
-              <input type="text" placeholder="Best Bathroom Renovator in The World Always" />
+              <label htmlFor="subHeading">Subheading</label>
+              <input
+                id="subHeading"
+                type="text"
+                placeholder="Best Bathroom Renovator in The World Always"
+                value={state.subHeading}
+                onChange={(e) => updateState({ subHeading: e.target.value })}
+              />
             </div>
           </div>
         </div>
