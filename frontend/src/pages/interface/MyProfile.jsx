@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Sidebar from "../../components/Sidebar";
 import ProfileCardImage from "../../assets/images/background-hero.png";
 import UserAvatar from "../../assets/images/People.png";
@@ -6,6 +6,15 @@ import useBusinessCardStore from "../../store/businessCardStore";
 
 export default function MyProfile() {
   const { state, updateState } = useBusinessCardStore();
+  const fileInputRef = useRef(null);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const blobUrl = URL.createObjectURL(file);
+      updateState({ coverPhoto: blobUrl });
+    }
+  };
 
   return (
     <div className="myprofile-layout">
@@ -120,11 +129,25 @@ export default function MyProfile() {
 
             <div className="input-block">
               <label htmlFor="coverPhoto">Cover Photo</label>
-              <img
-                src={state.coverPhoto || ProfileCardImage}
-                alt="Cover"
-                className="cover-preview"
+              <input
+                ref={fileInputRef}
+                id="coverPhoto"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                style={{ display: "none" }}
               />
+              <div
+                className="cover-preview-container"
+                onClick={() => fileInputRef.current?.click()}
+                style={{ cursor: "pointer" }}
+              >
+                <img
+                  src={state.coverPhoto || ProfileCardImage}
+                  alt="Cover"
+                  className="cover-preview"
+                />
+              </div>
             </div>
 
             <div className="input-block">
