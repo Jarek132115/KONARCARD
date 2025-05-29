@@ -16,6 +16,11 @@ export default function MyProfile() {
     }
   };
 
+  const themeStyles = {
+    backgroundColor: state.pageTheme === "dark" ? "#1F1F1F" : "#FFFFFF",
+    color: state.pageTheme === "dark" ? "#FFFFFF" : "#000000",
+  };
+
   return (
     <div className="myprofile-layout">
       <Sidebar />
@@ -25,7 +30,10 @@ export default function MyProfile() {
         <div className="myprofile-content">
           {/* Phone Preview */}
           <div className="myprofile-preview">
-            <div className="mock-phone">
+            <div
+              className="mock-phone"
+              style={{ fontFamily: state.font, ...themeStyles }}
+            >
               <img
                 src={state.coverPhoto || ProfileCardImage}
                 alt="Cover"
@@ -37,12 +45,27 @@ export default function MyProfile() {
                 Exchange Contact
               </button>
 
+              <p
+                className="text-about-me"
+                style={{
+                  textAlign: "left",
+                  marginBottom: "10px",
+                  fontWeight: 600,
+                  color: themeStyles.color,
+                }}
+              >
+                About me
+              </p>
               <div className="mock-about">
                 <img src={UserAvatar} alt="Avatar" className="mock-avatar" />
                 <div>
-                  <p className="mock-name">Jarek Konarski</p>
-                  <p className="mock-role">Web Designer</p>
-                  <p className="mock-bio">
+                  <p className="mock-name" style={{ color: themeStyles.color }}>
+                    Jarek Konarski
+                  </p>
+                  <p className="mock-role" style={{ color: themeStyles.color }}>
+                    Web Designer
+                  </p>
+                  <p className="mock-bio" style={{ color: themeStyles.color }}>
                     I am a young talented web design based out in London who
                     loves what he does and is one of the best at
                   </p>
@@ -104,6 +127,7 @@ export default function MyProfile() {
                   style={{
                     backgroundColor:
                       state.font === "Inter" ? "#F6F6F6" : "transparent",
+                    fontFamily: "Inter",
                   }}
                 >
                   Inter
@@ -115,6 +139,7 @@ export default function MyProfile() {
                   style={{
                     backgroundColor:
                       state.font === "Montserrat" ? "#F6F6F6" : "transparent",
+                    fontFamily: "Montserrat",
                   }}
                 >
                   Montserrat
@@ -126,6 +151,7 @@ export default function MyProfile() {
                   style={{
                     backgroundColor:
                       state.font === "Poppins" ? "#F6F6F6" : "transparent",
+                    fontFamily: "Poppins",
                   }}
                 >
                   Poppins
