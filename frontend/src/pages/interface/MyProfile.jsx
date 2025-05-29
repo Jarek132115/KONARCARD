@@ -71,19 +71,23 @@ export default function MyProfile() {
               <div className="option-row">
                 <button
                   type="button"
-                  className={`theme-button ${
-                    state.pageTheme === "light" ? "active" : ""
-                  }`}
+                  className="theme-button"
                   onClick={() => updateState({ pageTheme: "light" })}
+                  style={{
+                    backgroundColor:
+                      state.pageTheme === "light" ? "#F6F6F6" : "transparent",
+                  }}
                 >
                   Light Mode
                 </button>
                 <button
                   type="button"
-                  className={`theme-button ${
-                    state.pageTheme === "dark" ? "active" : ""
-                  }`}
+                  className="theme-button"
                   onClick={() => updateState({ pageTheme: "dark" })}
+                  style={{
+                    backgroundColor:
+                      state.pageTheme === "dark" ? "#F6F6F6" : "transparent",
+                  }}
                 >
                   Dark Mode
                 </button>
@@ -95,28 +99,34 @@ export default function MyProfile() {
               <div className="option-row">
                 <button
                   type="button"
-                  className={`font-button ${
-                    state.font === "Inter" ? "active" : ""
-                  }`}
+                  className="font-button"
                   onClick={() => updateState({ font: "Inter" })}
+                  style={{
+                    backgroundColor:
+                      state.font === "Inter" ? "#F6F6F6" : "transparent",
+                  }}
                 >
                   Inter
                 </button>
                 <button
                   type="button"
-                  className={`font-button ${
-                    state.font === "Montserrat" ? "active" : ""
-                  }`}
+                  className="font-button"
                   onClick={() => updateState({ font: "Montserrat" })}
+                  style={{
+                    backgroundColor:
+                      state.font === "Montserrat" ? "#F6F6F6" : "transparent",
+                  }}
                 >
                   Montserrat
                 </button>
                 <button
                   type="button"
-                  className={`font-button ${
-                    state.font === "Poppins" ? "active" : ""
-                  }`}
+                  className="font-button"
                   onClick={() => updateState({ font: "Poppins" })}
+                  style={{
+                    backgroundColor:
+                      state.font === "Poppins" ? "#F6F6F6" : "transparent",
+                  }}
                 >
                   Poppins
                 </button>
