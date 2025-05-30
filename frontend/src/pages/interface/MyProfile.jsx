@@ -4,6 +4,8 @@ import ProfileCardImage from "../../assets/images/background-hero.png";
 import UserAvatar from "../../assets/images/People.png";
 import useBusinessCardStore from "../../store/businessCardStore";
 import { EditBio } from "../../components/EditBio";
+import { MyWork } from "../../components/MyWork";
+import { MyService } from "../../components/MyService";
 
 export default function MyProfile() {
   const { state, updateState } = useBusinessCardStore();
@@ -235,6 +237,8 @@ export default function MyProfile() {
             </div>
 
             <EditBio />
+            <MyWork />
+            <MyService />
           </div>
         </div>
       </main>
