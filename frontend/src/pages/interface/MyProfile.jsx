@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import ProfileCardImage from "../../assets/images/background-hero.png";
 import UserAvatar from "../../assets/images/People.png";
 import useBusinessCardStore from "../../store/businessCardStore";
+import { EditBio } from "../../components/EditBio";
 
 export default function MyProfile() {
   const { state, updateState } = useBusinessCardStore();
@@ -232,6 +233,8 @@ export default function MyProfile() {
                 onChange={(e) => updateState({ subHeading: e.target.value })}
               />
             </div>
+
+            <EditBio />
           </div>
         </div>
       </main>
