@@ -38,10 +38,31 @@ export default function MyProfile() {
                 src={state.coverPhoto || ProfileCardImage}
                 alt="Cover"
                 className="mock-cover"
+                style={{
+                  boxShadow:
+                    state.pageTheme === "dark"
+                      ? "0 4px 10px rgba(255, 255, 255, 0.25)"
+                      : "0 4px 10px rgba(0, 0, 0, 0.25)",
+                }}
               />
               <h2 className="mock-title">{state.mainHeading}</h2>
-              <p className="mock-subtitle">{state.subHeading}</p>
-              <button type="button" className="mock-button">
+              <p
+                style={{
+                  color: state.pageTheme === "dark" ? "#fff" : "#000",
+                }}
+                className="mock-subtitle"
+              >
+                {state.subHeading}
+              </p>
+              <button
+                type="button"
+                style={{
+                  backgroundColor:
+                    state.pageTheme === "dark" ? "white" : "black",
+                  color: state.pageTheme !== "dark" ? "white" : "black",
+                }}
+                className="mock-button"
+              >
                 Exchange Contact
               </button>
 
@@ -56,16 +77,20 @@ export default function MyProfile() {
               >
                 About me
               </p>
-              <div className="mock-about">
+              <div
+                style={{
+                  boxShadow:
+                    state.pageTheme === "dark"
+                      ? "0 4px 10px rgba(255, 255, 255, 0.25)"
+                      : "0 4px 10px rgba(0, 0, 0, 0.25)",
+                }}
+                className="mock-about"
+              >
                 <img src={UserAvatar} alt="Avatar" className="mock-avatar" />
                 <div>
-                  <p className="mock-name" style={{ color: themeStyles.color }}>
-                    Jarek Konarski
-                  </p>
-                  <p className="mock-role" style={{ color: themeStyles.color }}>
-                    Web Designer
-                  </p>
-                  <p className="mock-bio" style={{ color: themeStyles.color }}>
+                  <p className="mock-name">{state.businessName}</p>
+                  <p className="mock-role">Web Designer</p>
+                  <p className="mock-bio">
                     I am a young talented web design based out in London who
                     loves what he does and is one of the best at
                   </p>
