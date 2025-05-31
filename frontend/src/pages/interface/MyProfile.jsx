@@ -106,7 +106,7 @@ export default function MyProfile() {
           <div className="myprofile-editor">
             <h2 className="editor-title">Create Your Digital Business Card</h2>
 
-            <div className="input-block">
+            {/* <div className="input-block">
               <label htmlFor="businessName">Business Card Name</label>
               <input
                 id="businessName"
@@ -115,7 +115,7 @@ export default function MyProfile() {
                 value={state.businessName}
                 onChange={(e) => updateState({ businessName: e.target.value })}
               />
-            </div>
+            </div> */}
 
             <div className="input-block">
               <label>Page Theme</label>
