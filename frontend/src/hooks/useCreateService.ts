@@ -1,26 +1,22 @@
 import { useMutation } from "@tanstack/react-query";
 import { api } from "../services/api";
 
-type CreateServicePayload = {
+type ServiceData = {
   service_name: string;
   service_details: string;
   user: string;
-};
-
-type ServiceResponse = {
-  id: string;
-  service_name: string;
-  service_details: string;
-  user: string;
-  created_at: string;
 };
 
 export const useCreateService = () => {
   return useMutation({
-    mutationFn: (payload: CreateServicePayload) =>
-      api<ServiceResponse>("/create_service", {
+    mutationFn: (data: ServiceData) => {
+      return api("/create_service", {
         method: "POST",
-        body: JSON.stringify(payload),
-      }),
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    },
   });
 };

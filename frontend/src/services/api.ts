@@ -18,10 +18,13 @@ export const api = async <T>(
 ): ApiResponse<T> => {
   const url = `${BASE_URL}${endpoint}`;
   const config: RequestInit = {
-    headers: {
-      "Content-Type": "application/json",
-      ...init?.headers,
-    },
+    headers:
+      init?.body instanceof FormData
+        ? undefined
+        : {
+            "Content-Type": "application/json",
+            ...init?.headers,
+          },
     ...init,
   };
 
