@@ -6,16 +6,39 @@ import useBusinessCardStore from "../../store/businessCardStore";
 import { EditBio } from "../../components/EditBio";
 import { MyWork } from "../../components/MyWork";
 import { MyService } from "../../components/MyService";
+import {
+  useCreateBusinessCard,
+  buildBusinessCardFormData,
+} from "../../hooks/useCreateBiz";
 
 export default function MyProfile() {
   const { state, updateState } = useBusinessCardStore();
   const fileInputRef = useRef(null);
+  const createBusinessCard = useCreateBusinessCard();
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
       const blobUrl = URL.createObjectURL(file);
-      updateState({ coverPhoto: blobUrl });
+      updateState({ coverPhoto: blobUrl, coverPhotoFile: file });
+    }
+  };
+
+  const handleSubmit = async () => {
+    const formData = buildBusinessCardFormData({
+      business_card_name: state.businessName,
+      page_theme: state.pageTheme,
+      style: state.font,
+      main_heading: state.mainHeading,
+      sub_heading: state.subHeading,
+      cover_photo: state.coverPhotoFile,
+      user: "current_user_id",
+    });
+
+    try {
+      await createBusinessCard.mutateAsync(formData);
+    } catch (error) {
+      console.error("Error creating business card:", error);
     }
   };
 
@@ -239,6 +262,22 @@ export default function MyProfile() {
             <EditBio />
             <MyWork />
             <MyService />
+            <button
+              onClick={handleSubmit}
+              className="submit-button"
+              style={{
+                backgroundColor: state.pageTheme === "dark" ? "white" : "black",
+                color: state.pageTheme !== "dark" ? "white" : "black",
+                padding: "12px 24px",
+                borderRadius: "8px",
+                border: "none",
+                cursor: "pointer",
+                marginTop: "20px",
+                width: "100%",
+              }}
+            >
+              Save Business Card
+            </button>
           </div>
         </div>
       </main>
