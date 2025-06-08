@@ -10,6 +10,23 @@ exports.createService = async (req, res) => {
   }
 };
 
+// CREATE MULTIPLE SERVICES
+exports.createMultipleServices = async (req, res) => {
+  try {
+    const services = req.body.services;
+
+    if (!Array.isArray(services) || services.length === 0) {
+      return res.status(400).json({ error: 'Please provide an array of services.' });
+    }
+
+    const createdServices = await Service.insertMany(services);
+    res.status(201).json({ message: 'Services created successfully', data: createdServices });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+
 // READ ALL
 exports.getAllServices = async (req, res) => {
   try {
