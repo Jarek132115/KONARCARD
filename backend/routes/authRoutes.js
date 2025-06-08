@@ -21,6 +21,8 @@ const serviceController = require('../controllers/serviceController');
 const workController = require('../controllers/workController');
 const reviewController = require('../controllers/reviewController');
 
+const businessCardController = require('../controllers/businessCardController');
+
 const router = express.Router();
 
 // Local auth routes
@@ -79,5 +81,9 @@ router.get('/get_review/:userid', reviewController.getReviewsByUserId);
 router.post('/update_review/:id', reviewController.updateReview);
 router.post('/delete_review/:id', reviewController.deleteReview);
 
+
+// Business Card Routes
+router.post('/business_card', businessCardController.uploadCoverPhoto, businessCardController.createOrUpdateBusinessCard);
+router.get('/business_card/:userId', businessCardController.getBusinessCardByUserId);
 
 module.exports = router;
