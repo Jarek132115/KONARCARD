@@ -7,6 +7,7 @@ interface BusinessCardState {
   coverPhoto: string | null;
   mainHeading: string;
   subHeading: string;
+  coverPhotoFile?: File;
 }
 
 interface BusinessCardStore {
