@@ -2,6 +2,36 @@ const { hashPassword, comparePassword } = require('../helpers/auth');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
+
+const multer = require('multer');
+const { PutObjectCommand } = require('@aws-sdk/client-s3');
+const { v4: uuidv4 } = require('uuid');
+const path = require('path');
+
+// import { S3Client } from "@aws-sdk/client-s3";
+const { S3Client } = require("@aws-sdk/client-s3");
+
+
+const dotenv = require('dotenv').config();
+
+BUCKET_NAME = process.env.BUCKET_NAME
+ACCESS_KEY = process.env.ACCESS_KEY
+SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY
+BUCKET_REGION = process.env.BUCKET_REGION
+
+const s3 = new S3Client({
+  region: process.env.BUCKET_REGION,
+  credentials: {
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+
 // Test route
 const test = (req, res) => {
   res.json('test is working');
@@ -10,7 +40,7 @@ const test = (req, res) => {
 // Register
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password, confirmPassword, age, bio } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
 
     if (!name) return res.json({ error: 'Name is required' });
     if (!email) return res.json({ error: 'Email is required' });
@@ -23,7 +53,11 @@ const registerUser = async (req, res) => {
     if (exist) return res.json({ error: 'Email is already taken' });
 
     const hashedPassword = await hashPassword(password);
-    const user = await User.create({ name, email, password: hashedPassword, age, bio });
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
     res.json(user);
   } catch (err) {
@@ -31,6 +65,42 @@ const registerUser = async (req, res) => {
     res.status(500).json({ error: 'Registration failed. Try again.' });
   }
 };
+
+
+
+const uploadAvatar = async (req, res) => {
+  try {
+    const file = req.file;
+    const userId = req.params.id;
+    console.log("userId: ",userId);
+    console.log("file: ",file);
+    if (!file) return res.status(400).json({ error: 'No image file uploaded' });
+
+    const ext = path.extname(file.originalname);
+    const key = `avatars/${uuidv4()}${ext}`;
+
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: key,
+      Body: file.buffer,
+      ContentType: file.mimetype,
+    };
+
+    await s3.send(new PutObjectCommand(params));
+
+    const avatarUrl = `https://${BUCKET_NAME}.s3.${BUCKET_REGION}.amazonaws.com/${key}`;
+
+    const user = await User.findByIdAndUpdate(userId, { avatar: avatarUrl }, { new: true });
+
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    res.json({ message: 'Avatar updated successfully', avatar: avatarUrl });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to upload avatar' });
+  }
+};
+
 
 // Login
 const loginUser = async (req, res) => {
@@ -96,7 +166,8 @@ const getUserById = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const user_id = req.params.id;
+    const user = await User.findByIdAndUpdate(user_id, req.body, { new: true });
     if (!user) return res.status(404).json({ message: "User not found" });
     res.json(user);
   } catch (err) {
@@ -123,5 +194,6 @@ module.exports = {
   getAllUsers,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  uploadAvatar
 };

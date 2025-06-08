@@ -3,6 +3,7 @@ const passport = require('passport');
 const {
   test,
   registerUser,
+  uploadAvatar,
   loginUser,
   getProfile,
   logoutUser,
@@ -11,6 +12,10 @@ const {
   updateUser,
   deleteUser
 } = require('../controllers/userController');
+
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+
 
 const serviceController = require('../controllers/serviceController');
 const workController = require('../controllers/workController');
@@ -21,9 +26,15 @@ const router = express.Router();
 // Local auth routes
 router.get('/', test);
 router.post('/register', registerUser);
+// // router.post('/register', upload.single('profileImage'), registerUser);
+// router.post('/register', upload.single('avatar'), registerUser);
+
 router.post('/login', loginUser);
 router.get('/profile', getProfile);
 router.post('/logout', logoutUser);
+
+router.post('/update_avatar/:id', upload.single('avatar'), uploadAvatar);
+
 
 // Google OAuth
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
@@ -49,12 +60,17 @@ router.get('/get_service/:userid', serviceController.getServiceByUserId);
 router.post('/update_service/:id', serviceController.updateService);
 router.post('/delete_service/:id', serviceController.deleteService);
 
+// For multiple service at a time
+router.post('/add_services', serviceController.createMultipleServices); 
+
 // work CRUD Routes
 router.post('/create_work', workController.createWork);
 router.get('/get_all_works', workController.getAllWorks);
 router.get('/get_work/:userid', workController.getWorkByUserId);
 router.post('/update_work/:id', workController.updateWork);
 router.post('/delete_work/:id', workController.deleteWork);
+router.post('/add_works', upload.array('work_images'), workController.createMultipleWorksWithImages);
+
 
 // review CRUD Routes
 router.post('/create_review', reviewController.createReview);

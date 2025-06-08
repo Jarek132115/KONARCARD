@@ -8,7 +8,8 @@ const userSchema = new Schema({
   googleId: { type: String },
   avatar: { type: String },
   age: { type: Number },
-  bio: { type: String }
+  bio: { type: String },
+  job_title: { type: String },
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
